@@ -1,4 +1,5 @@
 ﻿using OARPriorityGlobalLibrary;
+using System.Diagnostics;
 using System.Text.Json;
 
 namespace OARPriorityReader
@@ -93,6 +94,8 @@ namespace OARPriorityReader
             GL.WriteLine("Then run OARPriorityRemapper.exe.");
             GL.WriteLine("Press Enter to close...");
             Console.ReadLine();
+
+            Process.Start("explorer.exe", "OARBaseData");
         }
 
         
