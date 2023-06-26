@@ -16,8 +16,7 @@ OARPriorityReader reads and outputs base files for each of the found OAR mods. Y
 3. Select any of the _OARPriorirty.csv and copy them to the other created folder "[Install folder]\OAROverrideData".
 4. Open and edit them using notepad or anything you want.
    - I prefer Excel, Excel can automate changing the numbers.
-5. Once you are happy with your edits.
-6. Run OARPriorityRemapper.exe
+5. Run OARPriorityRemapper.exe
    - It will check if the mod was updated and/or has already had OARPriorityRemapper change something.
    - If it was updated and the folder names or prioritys were changed it will not run the _OARPriorirty.csv
    - If OARPriorityRemapper has already changed something it will not run the _OARPriorirty.csv
