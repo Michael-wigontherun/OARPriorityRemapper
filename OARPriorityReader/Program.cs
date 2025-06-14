@@ -8,7 +8,7 @@ namespace OARPriorityReader
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Hello, World!+1");
 
             if (GL.Close(args, "OARPriorityReader.txt")) return;
 
@@ -22,6 +22,9 @@ namespace OARPriorityReader
             IEnumerable<string> OpenAnimationReplacerFolders = Directory.GetDirectories(Path.Combine(dataPath, "Meshes"),
                 "OpenAnimationReplacer",
                 SearchOption.AllDirectories);
+
+            Dictionary<int, List<string>> Conflicts = new();
+
             foreach (string OpenAnimationReplacerFolder in OpenAnimationReplacerFolders)
             {
                 GL.WriteLine($"Looking for Mod Folders inside {OpenAnimationReplacerFolder.Replace(dataPath, "")}.");
@@ -62,7 +65,11 @@ namespace OARPriorityReader
                             {
                                 if (priority.ValueKind.Equals(JsonValueKind.Number))
                                 {
-                                    subData.Add(new SubFolderData(priority.GetInt32(), Path.GetFileName(modSubFolder)));
+                                    int priorityInt = priority.GetInt32();
+                                    subData.Add(new SubFolderData(priorityInt, Path.GetFileName(modSubFolder)));
+
+                                    if (!Conflicts.ContainsKey(priorityInt)) Conflicts.Add(priorityInt, new());
+                                    Conflicts[priorityInt].Add(modSubFolder.Replace(dataPath, ""));
                                 }
                                 else
                                 {
@@ -88,6 +95,19 @@ namespace OARPriorityReader
                 }
             }
 
+            GL.WriteLine("");
+            GL.WriteLine("Conflicting Priorities");
+            foreach (var conflict in Conflicts)
+            {
+                if (conflict.Value.Count <= 1) continue;
+                GL.WriteLine(conflict.Key + ":");
+                foreach(var data in conflict.Value)
+                {
+                    GL.WriteLine("\t" + data);
+                }
+            }
+            GL.WriteLine("");
+            GL.WriteLine("");
             GL.WriteLine("Finished Reading.");
             GL.WriteLine("Please copy any csv files for the mod you want to \"[This Program Path]\\OAROverrideData\".");
             GL.WriteLine("Then add the new priority values.");

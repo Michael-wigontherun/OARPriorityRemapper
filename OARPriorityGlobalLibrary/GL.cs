@@ -9,11 +9,17 @@
         public static void WriteLine(string line)
         {
             Console.WriteLine(line);
+            using (var writer = new StreamWriter(LogName, true))
+            {
+                writer.WriteLine(line);
+            }
+
         }
 
         public static bool Close(string[] args, string logName)
         {
             LogName = logName;
+            File.Create(LogName).Close();
             if (args.Length == 0)
             {
                 GL.WriteLine("This program requires you to use console arguments.");
