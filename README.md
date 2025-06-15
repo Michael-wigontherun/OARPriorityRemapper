@@ -3,10 +3,10 @@
 OARPriorityReader reads and outputs base files for each of the found OAR mods. You can then edit those outputted files to have OARPriorityRemapper to remap the OAR config files.
 
 ## Requirements
-- [.Net 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) its the same as Synthesis
+- [.Net 9 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) its the same as Synthesis
 
 ## Installation
-1. Download and install [.Net 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+1. Download and install [.Net 9 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 2. Extract this anywhere except into Skyrim's Data folder
 3. If using MO2 set both exes as a executables and add your data folder path to the arguments
 
